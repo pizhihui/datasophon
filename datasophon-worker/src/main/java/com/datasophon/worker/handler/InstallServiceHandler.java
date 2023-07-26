@@ -155,10 +155,10 @@ public class InstallServiceHandler {
     }
 
     public Boolean decompressTarGz(String sourceTarGzFile, String targetDir) {
-        logger.info("Start to use tar -zxvf to decompress {}", sourceTarGzFile);
+        logger.info("Start to use tar -zxf to decompress {}", sourceTarGzFile);
         ArrayList<String> command = new ArrayList<>();
         command.add("tar");
-        command.add("-zxvf");
+        command.add("-zxf");
         command.add(sourceTarGzFile);
         command.add("-C");
         command.add(targetDir);

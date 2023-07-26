@@ -349,7 +349,7 @@ public class InstallServiceImpl implements InstallService {
                 hostInfo = map.get(hostname);
             } else if (Objects.nonNull(clusterHost)) {
                 hostInfo.setHostname(hostname);
-                hostInfo.setSshUser("root");
+                hostInfo.setSshUser("biadmin");
                 hostInfo.setSshPort(22);
             }
             ActorRef hostActor =

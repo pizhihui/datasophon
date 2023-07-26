@@ -35,6 +35,14 @@ public class DecompressWorkerHandler implements DispatcherWorkerHandler {
 
     @Override
     public boolean handle(ClientSession session, HostInfo hostInfo) {
+
+        // 如果解压过就删除,然后再解压
+        String workerDir = Constants.INSTALL_PATH + "/datasophon-worker";
+        String res = MinaUtils.execCmdWithResult(session, "test -d " + workerDir);
+        if (!"failed".equals(res)) {
+            MinaUtils.execCmdWithResult(session, "rm -rf " + workerDir);
+        }
+
         String decompressResult = MinaUtils.execCmdWithResult(session, Constants.UNZIP_DDH_WORKER_CMD);
         if (Constants.FAILED.equals(decompressResult)) {
             logger.error("tar -zxvf datasophon-worker.tar.gz failed");

@@ -70,15 +70,16 @@ public class StartWorkerHandler implements DispatcherWorkerHandler {
             CommonUtils.updateInstallState(InstallState.FAILED, hostInfo);
         } else {
             // 设置开机自动启动
-            MinaUtils.execCmdWithResult(session,
-                    "\\cp " + installPath + "/datasophon-worker/script/datasophon-worker /etc/rc.d/init.d/");
-            MinaUtils.execCmdWithResult(session, "chmod +x /etc/rc.d/init.d/datasophon-worker");
-            MinaUtils.execCmdWithResult(session, "chkconfig --add datasophon-worker");
-            MinaUtils.execCmdWithResult(session,
-                    "\\cp " + installPath + "/datasophon-worker/script/datasophon-env.sh /etc/profile.d/");
-            MinaUtils.execCmdWithResult(session, "source /etc/profile.d/datasophon-env.sh");
+//            MinaUtils.execCmdWithResult(session,
+//                    "\\cp " + installPath + "/datasophon-worker/script/datasophon-worker /etc/rc.d/init.d/");
+//            MinaUtils.execCmdWithResult(session, "chmod +x /etc/rc.d/init.d/datasophon-worker");
+//            MinaUtils.execCmdWithResult(session, "chkconfig --add datasophon-worker");
+//            MinaUtils.execCmdWithResult(session,
+//                    "\\cp " + installPath + "/datasophon-worker/script/datasophon-env.sh /etc/profile.d/");
+//            MinaUtils.execCmdWithResult(session, "source /etc/profile.d/datasophon-env.sh");
+
             hostInfo.setMessage(MessageResolverUtils.getMessage("start.host.management.agent"));
-            MinaUtils.execCmdWithResult(session, "service datasophon-worker restart");
+            MinaUtils.execCmdWithResult(session, "sh " + installPath + "/datasophon-worker/script/datasophon-worker restart");
             hostInfo.setProgress(75);
             hostInfo.setCreateTime(new Date());
         }

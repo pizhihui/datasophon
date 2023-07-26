@@ -63,7 +63,7 @@ public class DispatcherWorkerActor extends UntypedActor {
                         hostInfo.getHostname(), hostInfo.getSshPort(), hostInfo.getSshUser());
         DispatcherWorkerHandlerChain handlerChain = new DispatcherWorkerHandlerChain();
         handlerChain.addHandler(new UploadWorkerHandler());
-        handlerChain.addHandler(new CheckWorkerMd5Handler());
+//        handlerChain.addHandler(new CheckWorkerMd5Handler());
         handlerChain.addHandler(new DecompressWorkerHandler());
         handlerChain.addHandler(new InstallJDKHandler());
         handlerChain.addHandler(

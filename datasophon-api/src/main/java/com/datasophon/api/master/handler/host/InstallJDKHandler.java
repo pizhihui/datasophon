@@ -36,7 +36,7 @@ public class InstallJDKHandler implements DispatcherWorkerHandler {
     public boolean handle(ClientSession session, HostInfo hostInfo) {
         hostInfo.setProgress(60);
         String arch = MinaUtils.execCmdWithResult(session, "arch");
-        String testResult = MinaUtils.execCmdWithResult(session, "test -d /usr/local/jdk1.8.0_333");
+        String testResult = MinaUtils.execCmdWithResult(session, "test -d /usr/java/latest");
         boolean exists = true;
         if (StringUtils.isNotBlank(testResult) && "failed".equals(testResult)) {
             exists = false;
